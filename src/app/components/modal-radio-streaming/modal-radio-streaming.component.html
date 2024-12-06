@@ -1,0 +1,17 @@
+<!-- radio-modal.component.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Radio Player</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h2>Now Playing</h2>
+  <p>Stream URL: {{ streamUrl }}</p>
+  <ion-button expand="block" (click)="preloadAudio()">Preload</ion-button>
+  <ion-button expand="block" (click)="playRadio()">Play</ion-button>
+  <ion-button expand="block" color="danger" (click)="stopRadio()">Stop</ion-button>
+</ion-content>

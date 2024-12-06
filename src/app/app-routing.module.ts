@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'camara',
+    loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule)
+  },
+  {
+    path: 'ubicacion',
+    loadChildren: () => import('./pages/ubicacion/ubicacion.module').then( m => m.UbicacionPageModule)
+  },
+  {
+    path: 'sensores',
+    loadChildren: () => import('./pages/sensores/sensores.module').then( m => m.SensoresPageModule)
+  },
+  {
+    path: 'radio-streaming',
+    loadChildren: () => import('./pages/radio-streaming/radio-streaming.module').then( m => m.RadioStreamingPageModule)
+  },
 ];
 
 @NgModule({

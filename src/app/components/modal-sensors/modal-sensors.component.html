@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sensor Data</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="location">
+    <h2>Location</h2>
+    <p>Latitude: {{ location.latitude }}</p>
+    <p>Longitude: {{ location.longitude }}</p>
+  </div>
+
+  <div *ngIf="acceleration">
+    <h2>Acceleration</h2>
+    <p>X: {{ acceleration.x }}</p>
+    <p>Y: {{ acceleration.y }}</p>
+    <p>Z: {{ acceleration.z }}</p>
+  </div>
+
+  <ion-button (click)="getLocation()">Get Location</ion-button>
+  <ion-button (click)="startWatching()">Start Accelerometer</ion-button>
+  <ion-button (click)="stopWatching()">Stop Accelerometer</ion-button>
+</ion-content>
