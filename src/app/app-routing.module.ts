@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { canActivate, redirectLoggedInTo } from '@angular/fire/auth-guard';
+
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: '',
@@ -27,6 +31,15 @@ const routes: Routes = [
     path: 'radio-streaming',
     loadChildren: () => import('./pages/radio-streaming/radio-streaming.module').then( m => m.RadioStreamingPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+
 ];
 
 @NgModule({
@@ -36,3 +49,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+ 
