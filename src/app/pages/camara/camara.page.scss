@@ -1,0 +1,45 @@
+.photo-container {
+    text-align: center;
+    margin-top: 20px;
+  
+    img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--ion-color-primary);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+    }
+  
+    ion-button {
+      --background: var(--ion-color-primary);
+      --border-radius: 20px;
+      --padding-start: 20px;
+      --padding-end: 20px;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+  }
+  
+  ion-item {
+    --border-radius: 12px;
+    --padding-start: 15px;
+    --padding-end: 15px;
+    margin: 10px 15px;
+    background: var(--ion-color-light);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button-container {
+    padding: 20px;
+    text-align: center;
+  
+    ion-button {
+      --background: var(--ion-color-success);
+      --border-radius: 20px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  }
+  

@@ -86,9 +86,17 @@ export class ModalCamaraComponent  implements AfterViewInit {
     });
     this.imageUrl = image.dataUrl;
   }
-  dismissModal() {
-    this.modalController.dismiss();
-  }
+
+
+dismissModal() {
+  this.modalController.dismiss({
+    imageUrl: this.imageUrl, // Devuelve la foto capturada
+  });
+}
+
+
+
+
   async saveToGallery() {
     if (this.imageUrl) {
       const fileName = `photo_${new Date().getTime()}.png`;

@@ -1,17 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>camara</ion-title>
+    <ion-title>Información del Profesor</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">camara</ion-title>
+      <ion-title size="large">Información del Profesor</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <!-- main-component.page.html -->
-  <ion-button (click)="openCameraModal()">Abrir Cámara</ion-button>
+  <!-- Mostrar la foto si existe o un placeholder si no -->
+  <div class="photo-container">
+    <img
+      [src]="imageUrl || 'assets/placeholder.png'"
+      alt="Foto del profesor"
+    />
+    <ion-button expand="block" (click)="openCameraModal()">Cambiar foto</ion-button>
+  </div>
 
+  <!-- Formulario para los datos generales -->
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nombre del Profesor</ion-label>
+      <ion-input [(ngModel)]="profesor.nombre" placeholder="Ingresa el nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Materia</ion-label>
+      <ion-input [(ngModel)]="profesor.materia" placeholder="Ingresa la materia"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input [(ngModel)]="profesor.email" type="email" placeholder="Ingresa el correo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Teléfono</ion-label>
+      <ion-input [(ngModel)]="profesor.telefono" type="tel" placeholder="Ingresa el teléfono"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <!-- Botón para guardar la información -->
+  <div class="button-container">
+    <ion-button expand="full" color="success" (click)="guardarInformacion()">Guardar Información</ion-button>
+  </div>
+  
+  <div class="button-container">
+    <ion-button expand="full" color="warning" routerLink="/home">Inicio</ion-button>
+  </div>
 </ion-content>
