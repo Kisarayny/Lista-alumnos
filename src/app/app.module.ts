@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,8 +14,9 @@ import { environment } from '../environments/environment';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase), // PASA LA CONFIGURACIÓN
+    AngularFireModule.initializeApp(environment.firebase), 
     AngularFireAuthModule,
+	ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
