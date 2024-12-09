@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase), 
     AngularFireAuthModule,
 	ReactiveFormsModule,
+	FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

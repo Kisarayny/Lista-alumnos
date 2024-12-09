@@ -43,6 +43,17 @@ const routes: Routes = [
     path: 'mapa',
     loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule)
 },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+  {
+    path: 'videostreaming',
+    loadChildren: () =>
+      import('./pages/videostreaming/videostreaming.module').then(
+        (m) => m.VideoStreamingPageModule 
+      ),
+  },
 
 ];
 

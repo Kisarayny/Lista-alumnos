@@ -39,6 +39,9 @@ export class HomePage implements OnInit {
     PushNotifications.addListener('pushNotificationActionPerformed', (notification: ActionPerformed) => {
       alert('Push action performed: ' + JSON.stringify(notification));
     });
+    
   }
 
+
+  
 }

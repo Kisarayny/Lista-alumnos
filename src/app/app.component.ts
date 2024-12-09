@@ -29,4 +29,6 @@ export class AppComponent {
       .then(() => console.log('Usuario deslogueado'))
       .catch((error) => console.error(error));
   }
+
+  
 }
