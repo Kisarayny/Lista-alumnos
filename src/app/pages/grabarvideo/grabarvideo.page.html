@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Grabar Video</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mostrar video en vivo mientras se graba -->
+  <video *ngIf="videoStream" width="100%" height="auto" autoplay [srcObject]="videoStream"></video>
+
+  <div *ngIf="!isRecording">
+    <ion-button expand="block" (click)="startRecording()">Iniciar Grabación</ion-button>
+  </div>
+
+  <div *ngIf="isRecording">
+    <ion-button expand="block" (click)="stopRecording()">Detener Grabación</ion-button>
+  </div>
+
+  <!-- Mostrar video grabado -->
+  <div *ngIf="videoUrl">
+    <h3>Video Grabado</h3>
+    <video [src]="videoUrl" controls width="100%" height="auto"></video>
+    <ion-button expand="block" (click)="saveVideo()">Guardar Video</ion-button>
+    
+    <ion-button expand="full" color="warning" routerLink="/home">Inicio</ion-button>
+  </div>
+</ion-content>

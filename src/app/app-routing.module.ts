@@ -54,6 +54,10 @@ const routes: Routes = [
         (m) => m.VideoStreamingPageModule 
       ),
   },
+  {
+    path: 'grabarvideo',
+    loadChildren: () => import('./pages/grabarvideo/grabarvideo.module').then( m => m.GrabarvideoPageModule)
+  },
 
 ];
 
