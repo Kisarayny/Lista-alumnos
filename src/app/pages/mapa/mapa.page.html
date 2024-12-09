@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mi Ubicación</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Contenedor del mapa -->
+  <div id="map" style="height: 80%;"></div>  
+
+  <!-- Botón para obtener la ubicación -->
+  <ion-button (click)="getLocation()">Obtener ubicación</ion-button>
+  <ion-button routerLink="/home">Inicio</ion-button>
+</ion-content>
