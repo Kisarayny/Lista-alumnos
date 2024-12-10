@@ -1,25 +1,71 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Bienvenido, Profesor
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+    <ion-toolbar color="primary">
+      <ion-title size="large">Menú Principal</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <!-- home.page.html -->
-    <ion-button routerLink="/camara">Información del Profesor</ion-button>
-    <ion-button routerLink="/sensores">Abrir sensores</ion-button>
-    <ion-button routerLink="/radio-streaming">Escuchar musica</ion-button>
-    <ion-button routerLink="/mapa">Ver su ubicación</ion-button>
-    <ion-button routerLink="/videostreaming">¿Desea un consejo?</ion-button>
-    <ion-button routerLink="/grabarvideo">Grabar evidencia</ion-button>
+  <div class="welcome-container">
+    <h2>¿Qué deseas hacer hoy?</h2>
   </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="secondary" routerLink="/camara">
+          <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          Mis Datos
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="tertiary" routerLink="/sensores">
+          <ion-icon slot="start" name="speedometer-outline"></ion-icon>
+          Sensores
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="success" routerLink="/radio-streaming">
+          <ion-icon slot="start" name="musical-notes-outline"></ion-icon>
+          Música
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="warning" routerLink="/mapa">
+          <ion-icon slot="start" name="map-outline"></ion-icon>
+          Ubicación
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="danger" routerLink="/videostreaming">
+          <ion-icon slot="start" name="videocam-outline"></ion-icon>
+          Consejos
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="dark" routerLink="/grabarvideo">
+          <ion-icon slot="start" name="film-outline"></ion-icon>
+          Evidencia
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-button expand="block" fill="solid" color="sucess" routerLink="/listaalumnos">
+          <ion-icon slot="start" name="pencil-outline"></ion-icon>
+          Tomar lista
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

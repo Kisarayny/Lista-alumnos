@@ -58,6 +58,10 @@ const routes: Routes = [
     path: 'grabarvideo',
     loadChildren: () => import('./pages/grabarvideo/grabarvideo.module').then( m => m.GrabarvideoPageModule)
   },
+  {
+    path: 'listaalumnos',
+    loadChildren: () => import('./pages/listaalumnos/listaalumnos.module').then( m => m.ListaalumnosPageModule)
+  },
 
 ];
 

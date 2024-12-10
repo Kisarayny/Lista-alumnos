@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Tomar Asistencia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input
+        placeholder="Nombre del alumno"
+        [(ngModel)]="nuevoAlumno"
+      ></ion-input>
+      <ion-button (click)="agregarAlumno()" color="success">Agregar</ion-button>
+    </ion-item>
+    <ion-item-sliding *ngFor="let alumno of alumnos; let i = index">
+      <ion-item>
+        <ion-label>{{ alumno.nombre }}</ion-label>
+        <ion-toggle
+          slot="end"
+          [(ngModel)]="alumno.presente"
+          color="tertiary"
+        ></ion-toggle>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="eliminarAlumno(i)">
+          Eliminar
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <!-- Resumen -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Resumen</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Presentes: {{ obtenerResumen().presentes }}</p>
+      <p>Ausentes: {{ obtenerResumen().ausentes }}</p>
+    </ion-card-content>
+
+    <ion-button routerLink="/home">Inicio</ion-button>
+  </ion-card>
+</ion-content>
