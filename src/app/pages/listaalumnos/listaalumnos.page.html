@@ -1,45 +1,52 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Tomar Asistencia</ion-title>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de Alumnos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-list>
-    <ion-item>
-      <ion-input
-        placeholder="Nombre del alumno"
-        [(ngModel)]="nuevoAlumno"
-      ></ion-input>
-      <ion-button (click)="agregarAlumno()" color="success">Agregar</ion-button>
+    <ion-item *ngFor="let alumno of alumnos; let i = index">
+      <ion-label>{{ alumno.nombre }}</ion-label>
+      
+      <!-- Toggle de asistencia -->
+      <ion-toggle slot="end" [(ngModel)]="alumno.presente" 
+        (ionChange)="cambiarAsistencia(alumno)" color="tertiary">
+      </ion-toggle>
+
+      <!-- Justificante (Solo si está ausente) -->
+      <ng-container *ngIf="!alumno.presente">
+        <input type="file" (change)="subirJustificante($event, alumno)">
+
+        
+        <!-- Mostrar la foto del justificante si está presente -->
+        <div *ngIf="alumno.justificante">
+          <img [src]="alumno.justificante" alt="Justificante" width="100" height="100" (click)="verImagenGrande(alumno.justificante)" />
+        </div>
+      </ng-container>
+
+      <!-- Botón de eliminar -->
+      <ion-button color="danger" (click)="eliminarAlumno(alumno.id)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
     </ion-item>
-    <ion-item-sliding *ngFor="let alumno of alumnos; let i = index">
-      <ion-item>
-        <ion-label>{{ alumno.nombre }}</ion-label>
-        <ion-toggle
-          slot="end"
-          [(ngModel)]="alumno.presente"
-          color="tertiary"
-        ></ion-toggle>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="eliminarAlumno(i)">
-          Eliminar
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
   </ion-list>
 
-  <!-- Resumen -->
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Resumen</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Presentes: {{ obtenerResumen().presentes }}</p>
-      <p>Ausentes: {{ obtenerResumen().ausentes }}</p>
-    </ion-card-content>
+  <ion-item>
+    <ion-input placeholder="Nombre del alumno" [(ngModel)]="nuevoAlumno"></ion-input>
+    <ion-button (click)="agregarAlumno()" color="success">Agregar</ion-button>
+  </ion-item>
 
-    <ion-button routerLink="/home">Inicio</ion-button>
-  </ion-card>
+  <div class="resumen">
+    <p>Presentes: {{ obtenerResumen().presentes }}</p>
+    <p>Ausentes: {{ obtenerResumen().ausentes }}</p>
+  </div>
+
+  <ion-button expand="full" (click)="exportarExcel()">Descargar Excel</ion-button>
+  <ion-button expand="full" (click)="exportarPDF()">Descargar PDF</ion-button>
+
+  <!-- Imagen ampliada -->
+  <div *ngIf="imagenGrande" class="imagen-ampliada" (click)="cerrarImagenGrande()">
+    <img [src]="imagenGrande" alt="Imagen Ampliada" />
+  </div>
 </ion-content>

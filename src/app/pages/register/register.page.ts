@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController } from '@ionic/angular'; // Importa AlertController
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -16,27 +16,28 @@ export class RegisterPage {
     private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private alertController: AlertController // Inyecta AlertController
+    private alertController: AlertController
   ) {
-    this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]], // Email obligatorio y con formato válido
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$') // Contraseña con al menos una mayúscula, minúscula y número
+    this.registerForm = this.formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(6),
+            Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[\\W_]).{6,}$')
+          ],
         ],
-      ],
-      confirmPassword: ['', [Validators.required, Validators.minLength(5)]],
-    }, {
-      validators: this.passwordMatchValidator // Validación personalizada para que las contraseñas coincidan
-    });
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
-  // Método de registro
   async register() {
     if (this.registerForm.invalid) {
+      this.showErrorAlert('Todos los campos son obligatorios y deben cumplir con los requisitos.');
       return;
     }
 
@@ -45,27 +46,25 @@ export class RegisterPage {
     try {
       await this.authService.register(email, password);
       this.router.navigate(['/login']);
-    } catch (error: any) { // Esto le dice a TypeScript que el tipo de 'error' es 'any'
+    } catch (error: any) {
       if (error?.code === 'auth/email-already-in-use') {
-        this.showEmailErrorAlert(); // Llama a la función para mostrar la alerta
+        this.showErrorAlert('El correo electrónico ya está registrado.');
       } else {
-        console.error('Error al registrar:', error);
+        this.showErrorAlert('Ocurrió un error al registrarse. Inténtalo de nuevo.');
       }
     }
   }
 
-  // Función para mostrar alerta de correo electrónico ya registrado
-  async showEmailErrorAlert() {
+  async showErrorAlert(message: string) {
     const alert = await this.alertController.create({
       header: 'Error',
-      message: 'El correo electrónico ya está registrado.',
+      message,
       buttons: ['OK'],
+      cssClass: 'custom-alert',
     });
-
     await alert.present();
   }
 
-  // Métodos para obtener los controles del formulario
   get email() {
     return this.registerForm.get('email');
   }
@@ -78,11 +77,9 @@ export class RegisterPage {
     return this.registerForm.get('confirmPassword');
   }
 
-  // Validación personalizada para las contraseñas coincidan
   passwordMatchValidator(form: FormGroup) {
     const password = form.get('password')?.value;
     const confirmPassword = form.get('confirmPassword')?.value;
-
     if (password && confirmPassword && password !== confirmPassword) {
       form.get('confirmPassword')?.setErrors({ mismatch: true });
     }

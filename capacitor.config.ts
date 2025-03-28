@@ -1,13 +1,13 @@
 
 import { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'io.listaalumnos.edulist',
   appName: 'lista-alumnos',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {
     GoogleMaps: {
-      apiKey: 'AIzaSyCBNh4Zdih1ZZRVeusTqe1X_jpRJtOAcXo',  // Agrega tu clave de API aquí
+      apiKey: 'AIzaSyCBNh4Zdih1ZZRVeusTqe1X_jpRJtOAcXo', 
     }
   }
 };

@@ -1,10 +1,62 @@
+/* Estilo general de la pantalla */
+ion-content {
+  background-color: #87CEEB; /* Azul cielo */
+  border-radius: 10px;
+}
+
+/* Contenedor del logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Tamaño y estilo del logo */
+.logo {
+  width: 220px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Mensaje de bienvenida */
+.welcome-message {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 18px;
+}
+
+/* Personalización del formulario */
 ion-item {
-    margin-bottom: 10px;
-  }
-  
-  p {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
+  margin-bottom: 20px;
+  --background: transparent; /* Fondo transparente */
+  --border-radius: 8px;
+  --border-color: #0077b6; /* Contorno azul */
+  --border-width: 2px;
+}
+
+/* Estilo del texto dentro de los inputs */
+ion-input {
+  --color: #000000; /* Texto negro */
+  --placeholder-color: #666666; /* Color gris para el placeholder */
+}
+
+/* Botón de registrar con azul cielo */
+ion-button {
+  --background: #00a8e8; /* Azul cielo fuerte */
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Botón deshabilitado */
+ion-button:disabled {
+  --background: #152f3b; /* Azul más suave cuando está deshabilitado */
+}
+
+/* Estilo de los mensajes de error */
+.error-message {
+  color: red; /* Rojo para los errores */
+  font-size: 14px;
+  margin-top: 4px; /* Espacio debajo del input */
+  padding-left: 10px; /* Un poco de espacio al lado */
+}

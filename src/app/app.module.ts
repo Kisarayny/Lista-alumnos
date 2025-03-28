@@ -8,7 +8,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-
+import { AngularFireFunctionsModule } from '@angular/fire/compat/functions';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,9 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule,
 	ReactiveFormsModule,
 	   FormsModule,
+     AngularFireFunctionsModule,
+     AngularFireStorageModule,
+     HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
